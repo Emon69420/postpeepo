@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+  <div>
+   <form method="POST" action="">
+     {{ form.hidden_tag() }}
+      <fieldset>
+        <div class="formgroup">
+          {{ form.username.label}}
+          
+          {% if form.username.errors %}
+            <div>
+            {% for error in form.username.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+
+            {{ form.username}}
+            </div>
+
+          {% else %}
+
+            {{ form.username}}
+
+          {% endif %}
+
+        </div>
+        <div class="formgroup">
+          {{ form.email.label}}
+          
+          {% if form.email.errors %}
+
+            <div>
+            {% for error in form.email.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+
+            {{ form.email}}
+            <div>
+          {% else %}
+            
+            {{ form.email}}
+            
+          {% endif %}
+          
+        </div>
+        <div class="formgroup">
+          {{ form.password.label}}
+          
+          {% if form.password.errors %}
+          
+            <div>
+            {% for error in form.password.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+            </div>
+            {{ form.password}}
+
+          {% else %}
+
+            {{ form.password}}
+
+          {% endif %}
+          
+
+        </div>
+      </fieldset>
+      <div class="submit">
+          {{form.submit}}
+      </div>
+   </form>
+  </div>
+  <div class="jointoday">
+    <small>
+      Already Have An Accout? <a href="{{url_for('login')}}"> Login Now! </a>
+    </small>
+  </div>
+
+{% endblock %}
