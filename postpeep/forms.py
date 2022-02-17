@@ -8,7 +8,7 @@ class RegistrationForm(FlaskForm):
   username = StringField('username',  validators =[InputRequired(), Length(min=2, max=20)])
   email = StringField('email', validators =[InputRequired()])
   password = PasswordField('Password', validators =[InputRequired()])
-  submit = SubmitField('signup')
+  submit = SubmitField('register')
 
   def validate_username(self, username):
     
@@ -29,7 +29,7 @@ class LoginForm(FlaskForm):
   email = StringField('email', validators=[InputRequired()])
   password = PasswordField('Password',validators=[InputRequired()])
   remember = BooleanField('Remember Me')
-  submit = SubmitField('signup')
+  submit = SubmitField('sign in')
 
 
 #custom error template
