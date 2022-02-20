@@ -1,4 +1,4 @@
-import os
+#import os
 from flask import  render_template, url_for, redirect, request, session
 from postpeep.forms import RegistrationForm, LoginForm
 from postpeep.models import User
@@ -7,7 +7,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 import datetime
 import smtplib
 from random import randint
-my_secret = os.environ['PASS']
+#my_secret = os.environ['PASS']
 app.secret_key = 'verysecretmotha'
 
 def generatedCode():
@@ -70,7 +70,7 @@ def verify(email, username, password):
                   
   server = smtplib.SMTP("smtp.gmail.com", 587)
   server.starttls()
-  server.login("postpeepofficial@gmail.com", my_secret )
+  server.login("postpeepofficial@gmail.com", 'ronit@1116' )
   server.sendmail("postpeepofficial@gmail.com", email, message)
   
   if request.method == "POST":
