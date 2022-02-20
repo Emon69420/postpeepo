@@ -1,11 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import InputRequired, Length, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField
+from wtforms.validators import InputRequired, Length, ValidationError, Regexp
 from postpeep.models import User
 
 class RegistrationForm(FlaskForm):
 
-  username = StringField('username',  validators =[InputRequired(), Length(min=2, max=20)])
+  username = StringField('username',  validators =[InputRequired(),  Regexp("^[0-9A-Za-z_.]+$", message='only numbers, letters, underscores and periods are allowed'), Length(min=2, max=20)])
   email = StringField('email', validators =[InputRequired()])
   password = PasswordField('Password', validators =[InputRequired()])
   submit = SubmitField('register')
@@ -26,6 +26,8 @@ class RegistrationForm(FlaskForm):
 
 class LoginForm(FlaskForm):
 
+
+
   email = StringField('email', validators=[InputRequired()])
   password = PasswordField('Password',validators=[InputRequired()])
   remember = BooleanField('Remember Me')
@@ -39,3 +41,9 @@ class LoginForm(FlaskForm):
     
     if stuff:
       raise ValidationError('error message')'''
+
+class VerificationForm(FlaskForm):
+
+  verification = IntegerField('Enter OTP', validators=[InputRequired()])
+  submit = SubmitField('Submit OTP')
+  
