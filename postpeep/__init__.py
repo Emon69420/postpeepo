@@ -10,7 +10,16 @@ app.config['SECRET_KEY'] = '77869e944840a66f71edb77198e2d374'
 
 #database
 app.config[
-    'SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://u7izmd0xnbgzf72n:rLY6MVxtSEM1jK5Bp5ox@bcukcrmqqjt7awyhvdvp-mysql.services.clever-cloud.com:3306/bcukcrmqqjt7awyhvdvp"
+    'SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://u7izmd0xnbgzf72n:rLY6MVxtSEM1jK5Bp5ox@bcukcrmqqjt7awyhvdvp-mysql.services.clever-cloud.com:3306/bcukcrmqqjt7awyhvdvp?charset=utf8mb4"
+
+app.config['SQLALCHEMY_POOL_RECYCLE'] = 3600
+
+SQLALCHEMY_ENGINE_OPTIONS = {
+    'pool_recycle': 200,
+    'pool_pre_ping': True
+}
+
+
 database = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
